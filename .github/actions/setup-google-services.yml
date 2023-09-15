@@ -1,0 +1,35 @@
+name: '🔥🔐 Setup Google Services secrets for Firebase'
+description: '✍️🔑 Writes environment variables to .env files'
+inputs:
+  PROJECT_NUMBER:
+    description: '🧑‍💻 Project number'
+    required: true
+  PROJECT_ID:
+    description: '🆔 Project ID'
+    required: true
+  STORAGE_BUCKET:
+    description: '💾🪣 Storage bucket'
+    required: true
+  MOBILESDK_APP_ID:
+    description: '📱🆔 Mobile SDK App ID'
+    required: true
+  ANDROID_PACKAGE_NAME:
+    description: '👽📦 Android package name'
+    required: true
+  API_KEY:
+    description: '🔑 API key'
+    required: true
+  ENV_PATH:
+    description: '📂🔐 Path to the .env file'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        echo PROJECT_NUMBER=${{ inputs.PROJECT_NUMBER }} > ${{ inputs.ENV_PATH }}
+        echo PROJECT_ID=${{ inputs.PROJECT_ID }} >> ${{ inputs.ENV_PATH }}
+        echo STORAGE_BUCKET=${{ inputs.STORAGE_BUCKET }} >> ${{ inputs.ENV_PATH }}
+        echo MOBILESDK_APP_ID=${{ inputs.MOBILESDK_APP_ID }} >> ${{ inputs.ENV_PATH }}
+        echo ANDROID_PACKAGE_NAME=${{ inputs.ANDROID_PACKAGE_NAME }} >> ${{ inputs.ENV_PATH }}
+        echo API_KEY=${{ inputs.API_KEY }} >> ${{ inputs.ENV_PATH }}
+      shell: bash
