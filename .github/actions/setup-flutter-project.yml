@@ -1,0 +1,51 @@
+name: '🔥🔐 Setup Firebase secrets for a Flutter Project'
+description: '✍️🔑 Writes environment variables to .env files'
+inputs:
+  FIREBASE_WEB_API_KEY:
+    description: '🔥🌐🔑 Firebase Web API Key'
+    required: true
+  FIREBASE_ANDROID_API_KEY:
+    description: '🔥👽🔑 Firebase Android API Key'
+    required: true
+  FIREBASE_IOS_API_KEY:
+    description: '🔥🍎🔑 Firebase iOS API Key'
+    required: true
+  FIREBASE_MESSAGE_SENDER_ID:
+    description: '🔥💭🆔 Firebase Message Sender ID'
+    required: true
+  FIREBASE_PROJECT_ID:
+    description: '🔥🆔 Firebase Project ID'
+    required: true
+  FIREBASE_WEB_APP_ID:
+    description: '🔥🌐🆔 Firebase Web App ID'
+    required: true
+  FIREBASE_ANDROID_APP_ID:
+    description: '🔥👽🆔 Firebase Android App ID'
+    required: true
+  FIREBASE_IOS_APP_ID:
+    description: '🔥🍎🆔 Firebase iOS App ID'
+    required: true
+  FIREBASE_IOS_BUNDLE_ID:
+    description: '🔥🍎📦 Firebase iOS Bundle ID'
+    required: true
+  MEASUREMENT_ID:
+    description: '📏🆔 Measurement ID'
+    required: true
+  ENV_PATH:
+    description: '📂🔐 Path to write the .env file'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        echo FIREBASE_WEB_API_KEY=${{ inputs.FIREBASE_WEB_API_KEY }} > ${{ inputs.ENV_PATH }}
+        echo FIREBASE_ANDROID_API_KEY=${{ inputs.FIREBASE_ANDROID_API_KEY }} >> ${{ inputs.ENV_PATH }}
+        echo FIREBASE_IOS_API_KEY=${{ inputs.FIREBASE_IOS_API_KEY }} >> ${{ inputs.ENV_PATH }}
+        echo FIREBASE_MESSAGE_SENDER_ID=${{ inputs.FIREBASE_MESSAGE_SENDER_ID }} >> ${{ inputs.ENV_PATH }}
+        echo FIREBASE_PROJECT_ID=${{ inputs.FIREBASE_PROJECT_ID }} >> ${{ inputs.ENV_PATH }}
+        echo FIREBASE_WEB_APP_ID=${{ inputs.FIREBASE_WEB_APP_ID }} >> ${{ inputs.ENV_PATH }}
+        echo FIREBASE_ANDROID_APP_ID=${{ inputs.FIREBASE_ANDROID_APP_ID }} >> ${{ inputs.ENV_PATH }}
+        echo FIREBASE_IOS_APP_ID=${{ inputs.FIREBASE_IOS_APP_ID }} >> ${{ inputs.ENV_PATH }}
+        echo FIREBASE_IOS_BUNDLE_ID=${{ inputs.FIREBASE_IOS_BUNDLE_ID }} >> ${{ inputs.ENV_PATH }}
+        echo MEASUREMENT_ID=${{ inputs.MEASUREMENT_ID }} >> ${{ inputs.ENV_PATH }}
+      shell: bash
